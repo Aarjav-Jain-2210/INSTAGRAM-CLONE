@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Profile</title>
+</head>
+<body>
+  <h1>Profile</h1>
+  <div id="profile-container"></div>
+  <script>
+    async function fetchProfile() {
+      const userId = 'USER_ID'; // Replace with dynamic logic
+      const response = await fetch(`http://localhost:5000/user/${userId}`);
+      const user = await response.json();
+      document.getElementById('profile-container').innerHTML = `
+        <h2>${user.username}</h2>
+        <p>${user.bio}</p>
+        <img src="${user.profilePic}" alt="Profile Picture" />
+      `;
+    }
+    fetchProfile();
+  </script>
+</body>
+</html>
